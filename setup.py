@@ -1,4 +1,3 @@
-from typing import List
 import os
 import re
 from pathlib import Path
@@ -30,11 +29,9 @@ def get_version() -> str:
     return version
 
 requirements = [
-    "ray==2.8.0",
-    "ray[serve]==2.8.0",
-    "pydantic==1.10.13", # fix problem with Ray Serve startup
-    "vllm==0.2.3", # vLLM requires CUDA 12
-    "protobuf==3.20.3"
+    "ray==2.9.2",
+    "ray[serve]==2.9.2",
+    "vllm==0.3.0",
 ]
 
 setup(
@@ -51,7 +48,6 @@ setup(
     platforms= ["linux"],
     classifiers=[
         "Environment :: GPU :: NVIDIA CUDA :: 11.8",
-        "Programming Language :: Python :: 3.8",
         "Programming Language :: Python :: 3.9",
         "Programming Language :: Python :: 3.10",
         "Programming Language :: Python :: 3.11",
@@ -62,5 +58,5 @@ setup(
     install_requires=requirements,
     include_package_data=True,
     package_data={"ray_vllm_inference": ["models/*"]},
-    python_requires=">=3.8.0",
+    python_requires=">=3.9.0",
 )
